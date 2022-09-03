@@ -16,4 +16,20 @@ public class ActividadFormulas {
         // ª
     }
     
+    static void Ejercicio3(){
+    
+    }
+    static void Ejercicio13(){
+    
+    }
+    static void Ejercicio18(){
+    
+    }
+    static void Ejercicio23(){
+    
+    }
+    static void Ejercicio38(){
+    
+    }
+    
 }
