@@ -18,6 +18,27 @@ public class ActividadFormulas {
     static void menuPrincipal(){
     }
     static void menuFunciones(){
+        
+        char op2 = JOptionPane.showInputDialog(null, """
+                                                      
+                                                      1.EJERCICIO 3 
+                                                      2.EJERCICIO 13
+                                                      3.EJERCICIO 18 
+                                                      4.EJERCICIO 23 
+                                                      5.EJERCICIO 38  
+                                                     
+                                                      OPCION:""",
+                "MENU FORMULAS",1).charAt(0);
+
+            switch (op2) {
+                case '1' -> Ejercicio3();
+                case '2' -> Ejercicio13();
+                case '3' -> Ejercicio18();
+                case '4' -> Ejercicio23();
+                case '5' -> Ejercicio38();
+                default -> JOptionPane.showMessageDialog(null,"DIGITE UNA OPCION DEL 1 AL 5", "ADVERTENCIA",1);
+
+            }
     }
     static void menuFormulas(){
     }
