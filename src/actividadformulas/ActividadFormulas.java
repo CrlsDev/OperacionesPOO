@@ -15,7 +15,7 @@ public class ActividadFormulas {
     public static void main(String[] args) {
         // ª
     }
-    
+    //FORMULAS
     static void Ejercicio3(){
     
     }
@@ -29,6 +29,43 @@ public class ActividadFormulas {
     
     }
     static void Ejercicio38(){
+    
+    }
+    // FUNCIONES
+    static void ABS(){
+    
+    }
+    static void ATAN(){
+    
+    }
+    static void SIN(){
+    
+    }
+    static void COS(){
+    
+    }
+    static void TAN(){
+    
+    }
+    static void POW(){
+    
+    }
+    static void EXP(){
+    
+    }
+    static void LOG(){
+    
+    }
+    static void RANDOM(){
+    
+    }
+    static void ROUND(){
+    
+    }
+    static void FLOOR(){
+    
+    }
+    static void CEIL(){
     
     }
     
