@@ -12,14 +12,46 @@ import javax.swing.JOptionPane;
 
 public class ActividadFormulas {
     static boolean cont=false;
+    static char op1,op2;
     public static void main(String[] args) {
-        // ª
+        menuPrincipal();
     }
     static void menuPrincipal(){
-    }
-    static void menuFunciones(){
+        do{
+            try{
+                
+                op1=JOptionPane.showInputDialog(
+                    null,
+                    """
+                    1. Formulas
+                    2. Funciones
+                    3. Salir
+                    """,
+                    "MENU PRINCIPAL",
+                    3
+                ).charAt(0);
+            }catch(NullPointerException e){
+                op1='3';
+            }catch(StringIndexOutOfBoundsException e){
+                continue;
+            }
+            switch(op1){
+                case '1' -> menuFormulas();
+                case '2' -> menuFunciones();
+                default -> {
+                    JOptionPane.showMessageDialog(null,"Elige una opcion valida"
+                            ,"OPCION INVALIDA",
+                            0);
+                }
+            }            
+            
+        }while(op1!='3');
+        
+        
     }
     static void menuFormulas(){
+    }
+    static void menuFunciones(){
     }
     static double IngresoNumero(){
         double n;
