@@ -11,9 +11,33 @@ import static java.lang.Math.*;
 import javax.swing.JOptionPane;
 
 public class ActividadFormulas {
-
+    static boolean cont=false;
     public static void main(String[] args) {
         // ª
+    }
+    static double IngresoNumero(){
+        double n;
+        do{
+            try{
+                n = Double.parseDouble(JOptionPane.showInputDialog(
+                        null,
+                        "Digite un valor: ",
+                        "INGRESO DE NUMERO",
+                        3
+                        )); 
+                cont=true;
+                return n;
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, 
+                        "Introduzca un numero",
+                        "INGRESO DE NUMERO",
+                        0
+                );
+            }catch (NullPointerException e){
+                cont=false;
+                return 0;
+            }
+        }while(true);
     }
     //FORMULAS
     static void Ejercicio3(){
