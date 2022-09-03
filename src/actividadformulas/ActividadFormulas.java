@@ -15,6 +15,12 @@ public class ActividadFormulas {
     public static void main(String[] args) {
         // ª
     }
+    static void menuPrincipal(){
+    }
+    static void menuFunciones(){
+    }
+    static void menuFormulas(){
+    }
     static double IngresoNumero(){
         double n;
         do{
