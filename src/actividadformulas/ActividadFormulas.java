@@ -98,12 +98,20 @@ public class ActividadFormulas {
     static void menuFunciones(){
     }
     static double IngresoNumero(String titulo){
+        return IngresoNumero(titulo,"");
+    }
+    static double IngresoNumero(String titulo,String v){
         double n;
+        String info="Digite un valor: ";
+        if (v!=""){
+            info="Digite el valor "+v;
+        }
         do{
+            
             try{
                 n = Double.parseDouble(JOptionPane.showInputDialog(
                         null,
-                        "Digite un valor: ",
+                        info,
                         "INGRESO DE NUMERO: "+titulo,
                         3
                         )); 
@@ -151,15 +159,15 @@ public class ActividadFormulas {
     }
     static void Ejercicio23(){
         String titulo = "Ejercicio 23";
-        double a = IngresoNumero(titulo);
+        double a = IngresoNumero(titulo,"a");
         if (!cont) return;
-        double b = IngresoNumero(titulo);
+        double b = IngresoNumero(titulo,"b");
         if (!cont) return;
         double r = (pow(sqrt(a+b),2)+(sqrt(a+b)*sqrt(a-b)))/(pow(sqrt(a+b),2)-pow(sqrt(a-b),2));      
         JOptionPane.showMessageDialog(
                 null,
                 ""+r,
-                "EJERCICIO 3",
+                titulo,
                 1
         );
           
@@ -167,15 +175,15 @@ public class ActividadFormulas {
     }
     static void Ejercicio38(){
         String titulo = "EJERCICIO 38";
-        double a = IngresoNumero(titulo);
+        double a = IngresoNumero(titulo,"a");
         if (!cont) return;
-        double b = IngresoNumero(titulo);
+        double b = IngresoNumero(titulo,"b");
         if (!cont) return;
-        double c = IngresoNumero(titulo);
+        double c = IngresoNumero(titulo,"c");
         if (!cont) return;
-        double n = IngresoNumero(titulo);
+        double n = IngresoNumero(titulo,"n");
         if (!cont) return;
-        double m = IngresoNumero(titulo);
+        double m = IngresoNumero(titulo,"m");
         if (!cont) return;
         
         double r = (a*pow(c,(n-m)/n))/(b*pow(c,m/n)*pow(c,(n*m)/n));
