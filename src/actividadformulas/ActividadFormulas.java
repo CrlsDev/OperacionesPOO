@@ -153,7 +153,30 @@ public class ActividadFormulas {
     
     }
     static void Ejercicio38(){
-    
+        String titulo = "EJERCICIO 38";
+        double a = IngresoNumero(titulo);
+        if (!cont) return;
+        double b = IngresoNumero(titulo);
+        if (!cont) return;
+        double c = IngresoNumero(titulo);
+        if (!cont) return;
+        double n = IngresoNumero(titulo);
+        if (!cont) return;
+        double m = IngresoNumero(titulo);
+        if (!cont) return;
+        
+        double r = (a*pow(c,(n-m)/n))/(b*pow(c,m/n)*pow(c,(n*m)/n));
+        
+        JOptionPane.showMessageDialog(
+                null,
+                "("+a+"*("+c+")^(("+n+"-"+m+")/"+n+"))/"
+                +"("+b+"*("+c+")^("+m+"/"+n+")*("+c+")^("+"("+n+"*"+m+")/"+n+")"
+                +" = "+r,
+                titulo,
+                1
+        );
+        
+         
     }
     // FUNCIONES
     static void ABS(){
@@ -166,6 +189,7 @@ public class ActividadFormulas {
                 "FUNCION: ABS",
                 1
         );
+        
         
     }
     static void ATAN(){
