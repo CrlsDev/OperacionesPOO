@@ -50,7 +50,7 @@ public class ActividadFormulas {
         
 
     }
-    static void menuFunciones(){
+    static void menuFormulas(){
         
         char op2 = JOptionPane.showInputDialog(null, """
                                                       
@@ -73,7 +73,7 @@ public class ActividadFormulas {
 
             }
     }
-    static void menuFormulas(){
+    static void menuFunciones(){
     }
     static double IngresoNumero(){
         double n;
@@ -107,7 +107,15 @@ public class ActividadFormulas {
     
     }
     static void Ejercicio18(){
-    
+        double r3=sqrt(3),r5=sqrt(5);
+        double r = (r5+r3)/((r5-r3)*(r5+r3));
+        JOptionPane.showMessageDialog(
+                null,
+                "((5)^(1/2)+(3)^(1/2))/"
+                + "(((5)^(1/2)-(3)^(1/2))*((5)^(1/2)+(3)^(1/2))) = " + r,
+                "EJERCICIO 18",
+                1
+        );
     }
     static void Ejercicio23(){
     
