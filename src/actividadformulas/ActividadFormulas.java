@@ -150,6 +150,19 @@ public class ActividadFormulas {
         );
     }
     static void Ejercicio23(){
+        String titulo = "Ejercicio 23";
+        double a = IngresoNumero(titulo);
+        if (!cont) return;
+        double b = IngresoNumero(titulo);
+        if (!cont) return;
+        double r = (pow(sqrt(a+b),2)+(sqrt(a+b)*sqrt(a-b)))/(pow(sqrt(a+b),2)-pow(sqrt(a-b),2));      
+        JOptionPane.showMessageDialog(
+                null,
+                ""+r,
+                "EJERCICIO 3",
+                1
+        );
+          
     
     }
     static void Ejercicio38(){
