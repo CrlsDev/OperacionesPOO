@@ -14,8 +14,7 @@ public class ActividadFormulas {
     static boolean cont=false;
     static char op1,op2;
     public static void main(String[] args) {
-        ABS();
-//        menuPrincipal();
+        menuPrincipal();
     }
     static void Despedida(){
         JOptionPane.showMessageDialog(null,"GRACIAS POR USAR EL PROGRAMA","SALIENDO",-1);
@@ -74,7 +73,7 @@ public class ActividadFormulas {
                         OPCION: """,
                         "MENU FORMULAS",1).charAt(0);
             }catch(NullPointerException e){
-                op1='6';
+                op2='6';
             }catch(StringIndexOutOfBoundsException e){
                 JOptionPane.showMessageDialog(null,"Digite algo en el campo","ADVERTENCIA",2);
                 continue;
@@ -97,9 +96,6 @@ public class ActividadFormulas {
         }while(op2!='6');
     }
     static void menuFunciones(){
-    }
-    static double IngresoNumero(){
-        return IngresoNumero("");
     }
     static double IngresoNumero(String titulo){
         double n;
@@ -127,7 +123,17 @@ public class ActividadFormulas {
     }
     //FORMULAS
     static void Ejercicio3(){
-    
+        double x=IngresoNumero("EJERCICIO 3");
+        if (!cont) return;
+        double r = sqrt(pow(x,5-1));
+        
+        JOptionPane.showMessageDialog(
+                null,
+                "("+x+"^(5-1))^(1/2) = "+r,
+                "EJERCICIO 3",
+                1
+        );
+                
     }
     static void Ejercicio13(){
     
