@@ -14,7 +14,11 @@ public class ActividadFormulas {
     static boolean cont=false;
     static char op1,op2;
     public static void main(String[] args) {
-        menuPrincipal();
+        ABS();
+//        menuPrincipal();
+    }
+    static void Despedida(){
+        JOptionPane.showMessageDialog(null,"GRACIAS POR USAR EL PROGRAMA","SALIENDO",-1);
     }
     static void menuPrincipal(){
         do{
@@ -34,11 +38,13 @@ public class ActividadFormulas {
             }catch(NullPointerException e){
                 op1='3';
             }catch(StringIndexOutOfBoundsException e){
+                JOptionPane.showMessageDialog(null,"Digite algo en el campo","ADVERTENCIA",2);
                 continue;
             }
             switch(op1){
                 case '1' -> menuFormulas();
                 case '2' -> menuFunciones();
+                case '3' -> Despedida();
                 default -> {
                     JOptionPane.showMessageDialog(null,"Elige una opcion valida"
                             ,"ADVERTENCIA",
@@ -52,17 +58,27 @@ public class ActividadFormulas {
 
     }
     static void menuFormulas(){
-        
-        char op2 = JOptionPane.showInputDialog(null, """
-                                                      
-                                                      1. EJERCICIO 3 
-                                                      2. EJERCICIO 13
-                                                      3. EJERCICIO 18 
-                                                      4. EJERCICIO 23 
-                                                      5. EJERCICIO 38  
-                                                     
-                                                      OPCION: """,
-                "MENU FORMULAS",1).charAt(0);
+        do{
+            try{
+                op2 = JOptionPane.showInputDialog(
+                        null, 
+                        """
+                        1. Ejercicio 3 
+                        2. Ejercicio 13
+                        3. Ejercicio 18 
+                        4. Ejercicio 23 
+                        5. Ejercicio 38  
+                        6. Regresar
+                        7. Salir
+                        
+                        OPCION: """,
+                        "MENU FORMULAS",1).charAt(0);
+            }catch(NullPointerException e){
+                op1='6';
+            }catch(StringIndexOutOfBoundsException e){
+                JOptionPane.showMessageDialog(null,"Digite algo en el campo","ADVERTENCIA",2);
+                continue;
+            }
 
             switch (op2) {
                 case '1' -> Ejercicio3();
@@ -70,20 +86,29 @@ public class ActividadFormulas {
                 case '3' -> Ejercicio18();
                 case '4' -> Ejercicio23();
                 case '5' -> Ejercicio38();
+                case '6' -> {}
+                case '7' -> {
+                    Despedida();
+                    System.exit(0);
+                }
                 default -> JOptionPane.showMessageDialog(null,"DIGITE UNA OPCION DEL 1 AL 5", "ADVERTENCIA",2);
 
             }
+        }while(op2!='6');
     }
     static void menuFunciones(){
     }
-    static double IngresoNumero(String titulo=""){
+    static double IngresoNumero(){
+        return IngresoNumero("");
+    }
+    static double IngresoNumero(String titulo){
         double n;
         do{
             try{
                 n = Double.parseDouble(JOptionPane.showInputDialog(
                         null,
                         "Digite un valor: ",
-                        "INGRESO DE NUMERO "+titulo,
+                        "INGRESO DE NUMERO: "+titulo,
                         3
                         )); 
                 cont=true;
@@ -128,9 +153,10 @@ public class ActividadFormulas {
     static void ABS(){
         double n = IngresoNumero("ABS");
         if (!cont) return;
+        double r = abs(n);
         JOptionPane.showMessageDialog(
                 null,
-                "El valor absoluto de "+n+" es: "+abs(n),
+                "El valor absoluto de "+n+" es: "+r,
                 "FUNCION: ABS",
                 1
         );
