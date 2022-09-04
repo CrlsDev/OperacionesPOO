@@ -26,7 +26,8 @@ public class ActividadFormulas {
                     1. Formulas
                     2. Funciones
                     3. Salir
-                    """,
+
+                    OPCION: """,
                     "MENU PRINCIPAL",
                     3
                 ).charAt(0);
@@ -40,8 +41,8 @@ public class ActividadFormulas {
                 case '2' -> menuFunciones();
                 default -> {
                     JOptionPane.showMessageDialog(null,"Elige una opcion valida"
-                            ,"OPCION INVALIDA",
-                            0);
+                            ,"ADVERTENCIA",
+                            2);
                 }
             }            
             
@@ -54,13 +55,13 @@ public class ActividadFormulas {
         
         char op2 = JOptionPane.showInputDialog(null, """
                                                       
-                                                      1.EJERCICIO 3 
-                                                      2.EJERCICIO 13
-                                                      3.EJERCICIO 18 
-                                                      4.EJERCICIO 23 
-                                                      5.EJERCICIO 38  
+                                                      1. EJERCICIO 3 
+                                                      2. EJERCICIO 13
+                                                      3. EJERCICIO 18 
+                                                      4. EJERCICIO 23 
+                                                      5. EJERCICIO 38  
                                                      
-                                                      OPCION:""",
+                                                      OPCION: """,
                 "MENU FORMULAS",1).charAt(0);
 
             switch (op2) {
@@ -69,20 +70,20 @@ public class ActividadFormulas {
                 case '3' -> Ejercicio18();
                 case '4' -> Ejercicio23();
                 case '5' -> Ejercicio38();
-                default -> JOptionPane.showMessageDialog(null,"DIGITE UNA OPCION DEL 1 AL 5", "ADVERTENCIA",1);
+                default -> JOptionPane.showMessageDialog(null,"DIGITE UNA OPCION DEL 1 AL 5", "ADVERTENCIA",2);
 
             }
     }
     static void menuFunciones(){
     }
-    static double IngresoNumero(){
+    static double IngresoNumero(String titulo=""){
         double n;
         do{
             try{
                 n = Double.parseDouble(JOptionPane.showInputDialog(
                         null,
                         "Digite un valor: ",
-                        "INGRESO DE NUMERO",
+                        "INGRESO DE NUMERO "+titulo,
                         3
                         )); 
                 cont=true;
@@ -90,8 +91,8 @@ public class ActividadFormulas {
             }catch(NumberFormatException e){
                 JOptionPane.showMessageDialog(null, 
                         "Introduzca un numero",
-                        "INGRESO DE NUMERO",
-                        0
+                        "ADVERTENCIA",
+                        2
                 );
             }catch (NullPointerException e){
                 cont=false;
@@ -125,7 +126,15 @@ public class ActividadFormulas {
     }
     // FUNCIONES
     static void ABS(){
-    
+        double n = IngresoNumero("ABS");
+        if (!cont) return;
+        JOptionPane.showMessageDialog(
+                null,
+                "El valor absoluto de "+n+" es: "+abs(n),
+                "FUNCION: ABS",
+                1
+        );
+        
     }
     static void ATAN(){
     
