@@ -45,9 +45,7 @@ public class ActividadFormulas {
                 case '2' -> menuFunciones();
                 case '3' -> Despedida();
                 default -> {
-                    JOptionPane.showMessageDialog(null,"Elige una opcion valida"
-                            ,"ADVERTENCIA",
-                            2);
+                    JOptionPane.showMessageDialog(null,"DIGITE UNA OPCION DEL 1 AL 3", "ADVERTENCIA",2);
                 }
             }            
             
@@ -90,12 +88,72 @@ public class ActividadFormulas {
                     Despedida();
                     System.exit(0);
                 }
-                default -> JOptionPane.showMessageDialog(null,"DIGITE UNA OPCION DEL 1 AL 5", "ADVERTENCIA",2);
+                default -> JOptionPane.showMessageDialog(null,"DIGITE UNA OPCION DEL 1 AL 7", "ADVERTENCIA",2);
 
             }
         }while(op2!='6');
     }
     static void menuFunciones(){
+        int op3=0;
+        do{
+            try{
+                String i = JOptionPane.showInputDialog(
+                        null, 
+                        """
+                        1. ABS
+                        2. ATAN
+                        3. SIN
+                        4. COS
+                        5. TAN
+                        6. POW
+                        7. EXP
+                        8. LOG
+                        9. RANDOM
+                        10. ROUND
+                        11. FLOOR
+                        12. CEIL
+                        13. Regresar
+                        14. Salir
+                        
+                        OPCION: """,
+                        "MENU FUNCIONES",1);
+                if (i==null) throw new NullPointerException();
+                
+                op3 = Integer.parseInt(i);
+            }catch(NullPointerException e){
+                op3=13;
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,
+                        "Digite un numero valido del 1 al 14",
+                        "ADVERTENCIA",
+                        2
+                );
+                continue;
+            
+            }
+
+            switch (op3) {
+                case 1 -> ABS();
+                case 2 -> ATAN();
+                case 3 -> SIN();
+                case 4 -> COS();
+                case 5 -> TAN();
+                case 6 -> POW();
+                case 7 -> EXP();
+                case 8 -> LOG();
+                case 9 -> RANDOM();
+                case 10 -> ROUND();
+                case 11 -> FLOOR();
+                case 12 -> CEIL();
+                case 13 -> {}
+                case 14 -> {
+                    Despedida();
+                    System.exit(0);
+                }
+                default -> JOptionPane.showMessageDialog(null,"DIGITE UNA OPCION DEL 1 AL 14", "ADVERTENCIA",2);
+
+            }
+        }while(op3!=13);
     }
     static double IngresoNumero(String titulo){
         return IngresoNumero(titulo,"");
@@ -103,8 +161,8 @@ public class ActividadFormulas {
     static double IngresoNumero(String titulo,String v){
         double n;
         String info="Digite un valor: ";
-        if (v!=""){
-            info="Digite el valor "+v;
+        if (!"".equals(v)){
+            info="Digite el valor \""+v+"\"";
         }
         do{
             
@@ -159,14 +217,29 @@ public class ActividadFormulas {
     }
     static void Ejercicio23(){
         String titulo = "Ejercicio 23";
-        double a = IngresoNumero(titulo,"a");
-        if (!cont) return;
-        double b = IngresoNumero(titulo,"b");
-        if (!cont) return;
+        JOptionPane.showMessageDialog(
+                null,
+                "(((a+b)^(1/2))^2+(a+b)^(1/2)*(a-b)^(1/2))",
+                titulo,
+                1
+        );
+        double a;
+        do{
+            a = IngresoNumero(titulo,"a");
+            if (!cont) return;
+        }while(a<=0);
+        
+        double b;
+        do{ 
+            b= IngresoNumero(titulo,"b");
+            if (!cont) return;            
+        }while((a+b)<0 || (a-b)<0 || (a+b)==(a-b));
+        
         double r = (pow(sqrt(a+b),2)+(sqrt(a+b)*sqrt(a-b)))/(pow(sqrt(a+b),2)-pow(sqrt(a-b),2));      
         JOptionPane.showMessageDialog(
                 null,
-                ""+r,
+                "((("+a+"+"+b+")^(1/2))^2+("+a+"+"+b+")^(1/2)*("+a+"-"+b+")^(1/2))/"
+              + "(("+a+"+"+b+")^(1/2))^2-("+a+"-"+b+")^(1/2))^2)"+r,
                 titulo,
                 1
         );
@@ -175,12 +248,29 @@ public class ActividadFormulas {
     }
     static void Ejercicio38(){
         String titulo = "EJERCICIO 38";
+        JOptionPane.showMessageDialog(
+                null,
+                "(a*(c)^((n-m)/n))/"
+                +"(b*(c)^(m/n)*(c)^((n*m)/n)",
+                titulo,
+                1
+        );
         double a = IngresoNumero(titulo,"a");
         if (!cont) return;
-        double b = IngresoNumero(titulo,"b");
-        if (!cont) return;
-        double c = IngresoNumero(titulo,"c");
-        if (!cont) return;
+        double b;
+        do{ 
+            b = IngresoNumero(titulo,"c");
+            if (!cont) return;
+        }while(b==0);
+        
+        
+        double c;
+        do{ 
+            c = IngresoNumero(titulo,"c");
+            if (!cont) return;
+        }while(c==0);
+        
+        
         double n = IngresoNumero(titulo,"n");
         if (!cont) return;
         double m = IngresoNumero(titulo,"m");
@@ -201,50 +291,133 @@ public class ActividadFormulas {
     }
     // FUNCIONES
     static void ABS(){
-        double n = IngresoNumero("ABS");
+        String titulo = "ABS";
+        double n = IngresoNumero(titulo);
         if (!cont) return;
         double r = abs(n);
         JOptionPane.showMessageDialog(
                 null,
                 "El valor absoluto de "+n+" es: "+r,
-                "FUNCION: ABS",
+                "FUNCION: "+titulo,
                 1
         );
         
         
     }
     static void ATAN(){
-    
+        String titulo = "ATAN";
+        double n = IngresoNumero(titulo);
+        if (!cont) return;
+        double r = atan(n);
+        JOptionPane.showMessageDialog(
+                null,
+                "La arcotangente de "+n+" es: "+r,
+                "FUNCION: "+titulo,
+                1
+        );
     }
     static void SIN(){
-    
+        String titulo = "SIN";
+        double n = IngresoNumero(titulo);
+        if (!cont) return;
+        double r = sin(n);
+        JOptionPane.showMessageDialog(
+                null,
+                "El seno de "+n+" es: "+r,
+                "FUNCION: "+titulo,
+                1
+        );
     }
     static void COS(){
-    
+        String titulo = "COS";
+        double n = IngresoNumero(titulo);
+        if (!cont) return;
+        double r = cos(n);
+        JOptionPane.showMessageDialog(
+                null,
+                "El coseno de "+n+" es: "+r,
+                "FUNCION: "+titulo,
+                1
+        );
     }
     static void TAN(){
-    
+        String titulo = "TAN";
+        double n = IngresoNumero(titulo);
+        if (!cont) return;
+        double r = tan(n);
+        JOptionPane.showMessageDialog(
+                null,
+                "La tangente de "+n+" es: "+r,
+                "FUNCION: "+titulo,
+                1
+        );
     }
     static void POW(){
-    
-    }
+        
+    }   
     static void EXP(){
-    
+        String titulo = "EXP";
+        double n = IngresoNumero(titulo);
+        if (!cont) return;
+        double r = exp(n);
+        JOptionPane.showMessageDialog(
+                null,
+                "La exponencial de "+n+" es: "+r,
+                "FUNCION: "+titulo,
+                1
+        );
     }
     static void LOG(){
-    
+        
+        String titulo = "LOG";
+        double n = IngresoNumero(titulo);
+        if (!cont) return;
+        double r = log(n);
+        JOptionPane.showMessageDialog(
+                null,
+                "El logaritmo (10) de "+n+" es: "+r,
+                "FUNCION: "+titulo,
+                1
+        );
     }
     static void RANDOM(){
     
     }
     static void ROUND(){
-    
+        String titulo = "ROUND";
+        double n = IngresoNumero(titulo);
+        if (!cont) return;
+        double r = round(n);
+        JOptionPane.showMessageDialog(
+                null,
+                "El redondeo de "+n+" es: "+r,
+                "FUNCION: "+titulo,
+                1
+        );
     }
     static void FLOOR(){
-    
+        String titulo = "FLOOR";
+        double n = IngresoNumero(titulo);
+        if (!cont) return;
+        double r = floor(n);
+        JOptionPane.showMessageDialog(
+                null,
+                "El entero menor mas cercano a "+n+" es: "+r,
+                "FUNCION: "+titulo,
+                1
+        );
     }
     static void CEIL(){
-    
+        String titulo = "CEIL";
+        double n = IngresoNumero(titulo);
+        if (!cont) return;
+        double r = floor(n);
+        JOptionPane.showMessageDialog(
+                null,
+                "El entero mayor mas cercano a "+n+" es: "+r,
+                "FUNCION: "+titulo,
+                1
+        );
     }
     
 }
