@@ -320,7 +320,7 @@ public class ActividadFormulas {
         String titulo = "SIN";
         double n = IngresoNumero(titulo);
         if (!cont) return;
-        double r = sin(n);
+        double r = sin(toRadians(n));
         JOptionPane.showMessageDialog(
                 null,
                 "El seno de "+n+" es: "+r,
@@ -332,7 +332,7 @@ public class ActividadFormulas {
         String titulo = "COS";
         double n = IngresoNumero(titulo);
         if (!cont) return;
-        double r = cos(n);
+        double r = cos(toRadians(n));
         JOptionPane.showMessageDialog(
                 null,
                 "El coseno de "+n+" es: "+r,
@@ -344,7 +344,7 @@ public class ActividadFormulas {
         String titulo = "TAN";
         double n = IngresoNumero(titulo);
         if (!cont) return;
-        double r = tan(n);
+        double r = tan(toRadians(n));
         JOptionPane.showMessageDialog(
                 null,
                 "La tangente de "+n+" es: "+r,
@@ -381,7 +381,24 @@ public class ActividadFormulas {
         );
     }
     static void RANDOM(){
-    
+        String titulo = "RANDOM";
+        double n;
+        do{
+            n = IngresoNumero(titulo,"minimo");
+            if (!cont) return;
+        }while(n<0);
+        double m;
+        do{
+            m = IngresoNumero(titulo);
+            if (!cont) return;
+        }while(m<=n);
+        int r = (int)((random()*(m-n))+n);
+        JOptionPane.showMessageDialog(
+                null,
+                "Del "+n+" al "+m+" ha tocado "+r,
+                "FUNCION: "+titulo,
+                1
+        );
     }
     static void ROUND(){
         String titulo = "ROUND";
