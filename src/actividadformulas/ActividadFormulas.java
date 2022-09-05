@@ -202,9 +202,32 @@ public class ActividadFormulas {
                 
     }
     static void Ejercicio13(){
-        double x=IngresoNumero("EJERCICIO 13");
-        if (!cont) return;
-        double r = 
+        String titulo = "Ejercicio 13";
+        JOptionPane.showMessageDialog(
+                null,
+                "((8*a^3*b)^(1/3))/((4*a^2)^(1/4))",
+                titulo,
+                1
+        );
+        double a;
+        do{
+            a = IngresoNumero(titulo,"a");
+            if (!cont) return;
+        }while(a<=0);
+        
+        double b;
+        do{ 
+            b= IngresoNumero(titulo,"b");
+            if (!cont) return;            
+        }while(b <=0);
+        double y=pow(a,3); double t=pow(a,2);
+        double s = (pow(8*y*b,1/3))/pow(4*t,1/4);      
+        JOptionPane.showMessageDialog(
+                null,
+                "((8*"+y+"*"+b+")^(1/3))/((4*"+t+")^(1/4))"+s,
+                titulo,
+                1
+        );
     
     }
     static void Ejercicio18(){
