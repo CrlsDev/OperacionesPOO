@@ -69,7 +69,7 @@ public class ActividadFormulas {
                         7. Salir
                         
                         OPCION: """,
-                        "MENU FORMULAS",1).charAt(0);
+                        "MENU FORMULAS",3).charAt(0);
             }catch(NullPointerException e){
                 op2='6';
             }catch(StringIndexOutOfBoundsException e){
@@ -116,7 +116,7 @@ public class ActividadFormulas {
                         14. Salir
                         
                         OPCION: """,
-                        "MENU FUNCIONES",1);
+                        "MENU FUNCIONES",3);
                 if (i==null) throw new NullPointerException();
                 
                 op3 = Integer.parseInt(i);
@@ -213,18 +213,21 @@ public class ActividadFormulas {
         do{
             a = IngresoNumero(titulo,"a");
             if (!cont) return;
-        }while(a<=0);
+            if (a==0){
+                JOptionPane.showMessageDialog(null,"El valor 'a' no puede ser 0", "ADVERTENCIA",2);
+                continue;
+            }
+            break;
+        }while(true);
         
-        double b;
-        do{ 
-            b= IngresoNumero(titulo,"b");
-            if (!cont) return;            
-        }while(b <=0);
+        double b; 
+        b= IngresoNumero(titulo,"b");
+        if (!cont) return;            
         double y=pow(a,3); double t=pow(a,2);
-        double s = (pow(8*y*b,1/3))/pow(4*t,1/4);      
+        double s = (pow(8*y*b,1.0/3.0))/pow(4*t,1.0/4.0);      
         JOptionPane.showMessageDialog(
                 null,
-                "((8*"+y+"*"+b+")^(1/3))/((4*"+t+")^(1/4))"+s,
+                "((8*"+y+"*"+b+")^(1/3))/((4*"+t+")^(1/4)) = "+s,
                 titulo,
                 1
         );
@@ -253,13 +256,23 @@ public class ActividadFormulas {
         do{
             a = IngresoNumero(titulo,"a");
             if (!cont) return;
-        }while(a<=0);
+            if (a<=0){
+                JOptionPane.showMessageDialog(null,"El valor 'a' no puede ser 0 o menor", "ADVERTENCIA",2);
+                continue;
+            }
+            break;
+        }while(true);
         
         double b;
         do{ 
             b= IngresoNumero(titulo,"b");
-            if (!cont) return;            
-        }while((a+b)<0 || (a-b)<0 || (a+b)==(a-b));
+            if (!cont) return;  
+            if ((a+b)<0 || (a-b)<0 || (a+b)==(a-b)){
+                JOptionPane.showMessageDialog(null,"El valor ingresado rompe la operacion", "ADVERTENCIA",2);
+                continue;
+            }
+            break;
+        }while(true);
         
         double r = (pow(sqrt(a+b),2)+(sqrt(a+b)*sqrt(a-b)))/(pow(sqrt(a+b),2)-pow(sqrt(a-b),2));      
         JOptionPane.showMessageDialog(
@@ -287,14 +300,24 @@ public class ActividadFormulas {
         do{ 
             b = IngresoNumero(titulo,"c");
             if (!cont) return;
-        }while(b==0);
+            if (b==0){
+                JOptionPane.showMessageDialog(null,"El valor 'b' no puede ser 0", "ADVERTENCIA",2);
+                continue;
+            }
+            break;
+        }while(true);
         
         
         double c;
         do{ 
             c = IngresoNumero(titulo,"c");
             if (!cont) return;
-        }while(c==0);
+            if (c==0){
+                JOptionPane.showMessageDialog(null,"El valor 'c' no puede ser 0", "ADVERTENCIA",2);
+                continue;
+            }
+            break;
+        }while(true);
         
         
         double n = IngresoNumero(titulo,"n");
@@ -368,8 +391,16 @@ public class ActividadFormulas {
     }
     static void TAN(){
         String titulo = "TAN";
-        double n = IngresoNumero(titulo);
-        if (!cont) return;
+        double n;
+        do{
+            n = IngresoNumero(titulo);
+            if (!cont) return;
+            if ((n+90)%180==0){
+                JOptionPane.showMessageDialog(null,"La tangente no esta definida en los angulos verticales", "ADVERTENCIA",2);
+                continue;
+            }
+            break;
+        }while(true);
         double r = tan(toRadians(n));
         JOptionPane.showMessageDialog(
                 null,
@@ -379,6 +410,30 @@ public class ActividadFormulas {
         );
     }
     static void POW(){
+        double a,b;
+        String titulo = "POW";
+        a=IngresoNumero(titulo,"a");
+        if (!cont) return;
+        do{
+            b=round(IngresoNumero(titulo,"b"));
+            if (!cont) return;
+            if (a==0 && b==0){
+                JOptionPane.showMessageDialog(null,"No se puede elevar 0 a la 0", "ADVERTENCIA",2);
+                continue;
+            }
+            break;
+        }while (true);
+        double r = pow(a,b);
+        
+        JOptionPane.showMessageDialog(
+                null,
+                "("+a+")"+"^("+b+") = "+r,
+                "FUNCION: "+titulo,
+                1
+        );
+        
+        
+        
         
     }   
     static void EXP(){
@@ -396,9 +451,10 @@ public class ActividadFormulas {
     static void LOG(){
         
         String titulo = "LOG";
+                
         double n = IngresoNumero(titulo);
         if (!cont) return;
-        double r = log(n);
+        double r = log(abs(n));
         JOptionPane.showMessageDialog(
                 null,
                 "El logaritmo (10) de "+n+" es: "+r,
