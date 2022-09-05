@@ -202,6 +202,9 @@ public class ActividadFormulas {
                 
     }
     static void Ejercicio13(){
+        double x=IngresoNumero("EJERCICIO 13");
+        if (!cont) return;
+        double r = 
     
     }
     static void Ejercicio18(){
